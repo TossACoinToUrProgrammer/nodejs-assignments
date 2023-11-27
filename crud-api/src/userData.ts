@@ -1,9 +1,9 @@
 import { IUser } from "./models"
-import mockUsers from "./mockData.json"
 import { isMultiEnabled } from "./utils/isMultiEnabled"
 
 let users: IUser[] = []
 
+// should be called after each mutation with users if mode --multi
 const syncUsers = () => {
   if (isMultiEnabled()) {
     process.send!({ type: "syncUsers", data: users })
