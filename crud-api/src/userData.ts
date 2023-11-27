@@ -1,10 +1,21 @@
 import { IUser } from "./models"
 import mockUsers from "./mockData.json"
+import { isMultiEnabled } from "./utils/isMultiEnabled"
 
-const users: IUser[] = []
+let users: IUser[] = []
+
+const syncUsers = () => {
+  if (isMultiEnabled()) {
+    process.send!({ type: "syncUsers", data: users })
+  }
+}
 
 export function getUsers(): IUser[] {
   return users
+}
+
+export function setUsers(newUsers: IUser[]) {
+  users = newUsers
 }
 
 export function getUserById(userId: string): IUser | undefined {
@@ -13,12 +24,15 @@ export function getUserById(userId: string): IUser | undefined {
 
 export function addUser(newUser: IUser): void {
   users.unshift(newUser)
+  syncUsers()
 }
 
 export function deleteUser(userId: string) {
-  return users.filter((el) => el.id !== userId)
+  users = users.filter((el) => el.id !== userId)
+  syncUsers()
 }
 
 export function updateUser(updatedUser: IUser) {
-  return users.map((el) => (el.id === updatedUser.id ? updatedUser : el))
+  users = users.map((el) => (el.id === updatedUser.id ? updatedUser : el))
+  syncUsers()
 }

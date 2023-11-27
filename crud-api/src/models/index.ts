@@ -4,3 +4,8 @@ export interface IUser {
   age: number
   hobbies: string[]
 }
+
+export interface WorkerMessage {
+  type: string,
+  data: any
+}

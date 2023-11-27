@@ -15,7 +15,7 @@ export const handleUsersReq = async (req: IncomingMessage, res: ServerResponse) 
 
   if (method === "POST") {
     const body = await getRequestBody(req)
-
+    
     const parsedBody = JSON.parse(body)
     const { username, hobbies, age } = parsedBody
 
