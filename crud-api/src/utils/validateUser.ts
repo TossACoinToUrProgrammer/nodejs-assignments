@@ -9,7 +9,7 @@ export const validateUser = (obj: UserTypeExceptId) => {
     !username ||
     typeof username !== "string" ||
     !hobbies ||
-    !hobbies.length ||
+    !(hobbies instanceof Array) ||
     !isArrayOfStrings(hobbies) ||
     !age ||
     typeof age !== "number"

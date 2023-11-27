@@ -1,7 +1,7 @@
 import { IUser } from "./models"
 import mockUsers from "./mockData.json"
 
-const users: IUser[] = mockUsers
+const users: IUser[] = []
 
 export function getUsers(): IUser[] {
   return users

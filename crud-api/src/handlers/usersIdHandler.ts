@@ -17,6 +17,7 @@ export const handleUsersIdReq = async (req: IncomingMessage, res: ServerResponse
   }
 
   const user = getUserById(userId)
+ 
   if (!user) {
     return sendResponse(res, 404, "Not Found")
   }

@@ -1,7 +1,6 @@
 import { IncomingMessage, ServerResponse } from "http"
 import { v4 as uuidv4 } from "uuid"
 
-import { parseUrl } from "../utils/parseUrl"
 import { addUser, getUsers } from "../userData"
 import { sendResponse } from "../utils/sendResponse"
 import { validateUser } from "../utils/validateUser"
